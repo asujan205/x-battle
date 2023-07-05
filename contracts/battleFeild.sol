@@ -90,6 +90,14 @@ function getPlayerTokenInfo(address _address) public view  isPlayerToken(_addres
         return gameTokens[playerTokenInfo[_address]];
     }
 
+modifier IsBattle (string memory _name) 
+    {
+        require(battleInfo[_name] != 0);
+        _;
+    }
+    
+
+
 
 
 
