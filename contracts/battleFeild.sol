@@ -56,6 +56,16 @@ struct Battle {
 }
 
 
+ mapping(address => uint256) public playerInfo; 
+  mapping(address => uint256) public playerTokenInfo; 
+  mapping(string => uint256) public battleInfo;
+
+  Player[] public players; // Array of players
+  GameToken[] public gameTokens; // Array of game tokens
+  Battle[] public battles;
+
+
+
 
 
 
