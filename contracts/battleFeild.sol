@@ -12,16 +12,19 @@ contract BattleFeild is ERC1155,ERC1155Supply,Ownable{
    string public baseURI;
    uint256 public totalSupply;
 
-   uint256 public constant Ram =5;
-   uint256 public constant shiva =6;
-    uint256 public constant vishnu =7;
-    uint256 public constant brahma =8;
-    uint256 public constant hanuman =9;
-    uint256 public constant ganesha =10;
-    uint256 public constant ravan =0;
-    uint256 public constant kumbhkaran =1;
-    uint256 public constant duryoDhan =2;
-    
+   uint256 public constant RAVANA = 0;
+
+   uint256 public constant KUMBAKARNA = 1;
+
+    uint256 public constant HANUMAN = 2;
+
+   
+
+    uint256 public constant LAKSHMANA = 3;
+
+    uint256 public constant RAMA = 4;
+
+
 
 
 
