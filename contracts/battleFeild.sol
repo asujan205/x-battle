@@ -69,8 +69,16 @@ struct Battle {
         require(playerInfo[Paddress] != 0);
         _;
     }
+modifier isPlayerToken (address Taddress){
+    require(playerTokenInfo[Taddress] != 0);
+    _;
+}
 
 
+function getPlayerInfo(address _address) public view  isPlayer(_address) returns (Player memory) {
+    
+        return players[playerInfo[_address]];
+    }
 
 
 
