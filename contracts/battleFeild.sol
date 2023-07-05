@@ -95,6 +95,12 @@ modifier IsBattle (string memory _name)
         require(battleInfo[_name] != 0);
         _;
     }
+
+
+    function getBattleInfo(string memory _name) public view  IsBattle(_name) returns (Battle memory) {
+    
+        return battles[battleInfo[_name]];
+    }
     
 
 
