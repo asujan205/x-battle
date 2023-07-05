@@ -24,6 +24,40 @@ contract BattleFeild is ERC1155,ERC1155Supply,Ownable{
 
     uint256 public constant RAMA = 4;
 
+     uint256 public constant MAX_ATTACK_DEFEND_STRENGTH = 10;
+
+       enum BattleStatus{ PENDING, STARTED, ENDED }
+
+
+struct GameToken {
+
+    string name ;
+    uint256 id ;
+    uint256 attackStrength;
+    uint256 defendStrength;
+}
+
+
+struct Player {
+    address playerAddress;
+    string name;
+    uint256 playerHealth;
+    bool isAlive;    
+}
+
+struct Battle {
+    BattleStatus status;
+    bytes32 battleHash;
+    string name ;
+
+    address[2] players;
+    uint256[2] playerMove;
+    address winner;
+}
+
+
+
+
 
 
 
