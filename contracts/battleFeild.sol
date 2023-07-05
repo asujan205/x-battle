@@ -108,6 +108,22 @@ modifier IsBattle (string memory _name)
         return battles;
     }
 
+
+    function UpdateBattle (string memory _name, Battle memory _battle) public IsBattle(_name) {
+        battles[battleInfo[_name]] = _battle;
+
+    }
+
+    // trigger the events
+
+    event BattleCreated(string name, address player1, address player2);
+    event newPlayer(address playerAddress, string name);
+    event newGameToken (string name, uint256 id, uint256 attackStrength, uint256 defendStrength);
+    event BattleEnded(string battleName, address indexed winner, address indexed loser);
+  event BattleMove(string indexed battleName, bool indexed isFirstMove);
+
+
+
      constructor(string memory _metadataURI) ERC1155(_metadataURI) {
     baseURI = _metadataURI; // Set baseURI
     // initialize();
