@@ -64,6 +64,12 @@ struct Battle {
   GameToken[] public gameTokens; // Array of game tokens
   Battle[] public battles;
 
+  modifier isPlayer (address Paddress) 
+    {
+        require(playerInfo[Paddress] != 0);
+        _;
+    }
+
 
 
 
