@@ -7,7 +7,8 @@ import '@openzeppelin/contracts/access/Ownable.sol';
 import '@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol';
 
 
-contract BattleFeild is ERC1155,ERC1155Supply,Ownable{
+contract BattleGods is ERC1155,ERC1155Supply,Ownable{
+   
 
    string public baseURI;
    uint256 public totalSupply;
@@ -101,13 +102,32 @@ modifier IsBattle (string memory _name)
     
         return battles[battleInfo[_name]];
     }
-    
+
+
+    function getAllBattle() public view returns (Battle[] memory) {
+        return battles;
+    }
+
+     constructor(string memory _metadataURI) ERC1155(_metadataURI) {
+    baseURI = _metadataURI; // Set baseURI
+    // initialize();
+  }
 
 
 
 
 
-
+ // The following functions are overrides required by Solidity.
+  function _beforeTokenTransfer(
+    address operator,
+    address from,
+    address to,
+    uint256[] memory ids,
+    uint256[] memory amounts,
+    bytes memory data
+  ) internal override(ERC1155, ERC1155Supply) {
+    super._beforeTokenTransfer(operator, from, to, ids, amounts, data);
+  }
 
 
 
