@@ -80,6 +80,16 @@ function getPlayerInfo(address _address) public view  isPlayer(_address) returns
         return players[playerInfo[_address]];
     }
 
+    function getAllplayer() public view returns (Player[] memory) {
+        return players;
+    }
+
+
+function getPlayerTokenInfo(address _address) public view  isPlayerToken(_address) returns (GameToken memory) {
+    
+        return gameTokens[playerTokenInfo[_address]];
+    }
+
 
 
 
