@@ -121,6 +121,7 @@ modifier IsBattle (string memory _name)
     event newGameToken (string name, uint256 id, uint256 attackStrength, uint256 defendStrength);
     event BattleEnded(string battleName, address indexed winner, address indexed loser);
   event BattleMove(string indexed battleName, bool indexed isFirstMove);
+  event RoundEnd(address[2] damagedPlayers);
 
 
 
@@ -128,6 +129,13 @@ modifier IsBattle (string memory _name)
     baseURI = _metadataURI; // Set baseURI
     // initialize();
   }
+
+function setURI(string memory newuri) public onlyOwner{
+    _setURI(newuri);
+}
+
+
+
 
 
 
