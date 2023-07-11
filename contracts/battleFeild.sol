@@ -141,6 +141,34 @@ function setURI(string memory newuri) public onlyOwner{
   }
 
 
+function RegisterPlayer(string memory _name , string memory _gameTokenName ) external {
+
+    require(playerInfo[msg.sender] == 0, "Player already registered");
+
+    uint256 _id = players.length;
+
+    players.push(Player(msg.sender, _name, 100, true));
+
+    playerInfo[msg.sender] = _id;
+
+    // createRandomGameToken(_gameTokenName);
+
+    emit newPlayer(msg.sender, _name);
+
+
+
+
+
+
+
+}
+
+    
+
+
+
+
+
 
 
 
