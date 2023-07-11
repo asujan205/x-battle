@@ -52,7 +52,7 @@ struct Battle {
     string name ;
 
     address[2] players;
-    uint256[2] playerMove;
+    uint8[2] playerMove;
     address winner;
 }
 
@@ -134,6 +134,11 @@ function setURI(string memory newuri) public onlyOwner{
     _setURI(newuri);
 }
 
+  function initialize() private {
+    gameTokens.push(GameToken("", 0, 0, 0));
+    players.push (Player(address(0), "",  0, false));
+    battles.push(Battle(BattleStatus.PENDING, bytes32(0), "", [address(0), address(0)],[0,0], address(0)));
+  }
 
 
 
