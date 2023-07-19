@@ -177,9 +177,21 @@ function joinBattle (string memory name ) public {
     _battle.players[1] = msg.sender;
     _battle.status = BattleStatus.STARTED;
 
+    players[playerInfo[_battle.players[0]]].isAlive = true;
+    players[playerInfo[_battle.players[1]]].isAlive = true;
+
+
+
     updateBattle(name, _battle);
 
     emit BattleCreated(name, _battle.players[0], _battle.players[1]);
+}
+
+
+function getBattleMove(string memory _name) public view IsBattle(_name) returns (uint8[2] memory) {
+
+    return battles[battleInfo[_name]].playerMove;
+
 }
 
 
