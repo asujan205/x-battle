@@ -152,6 +152,13 @@ contract BattleGods is ERC1155, ERC1155Supply, Ownable {
         require(getPlayerInfo(msg.sender).isAlive, "Player is not alive");
         _createGameToken(_name);
     }
+     
+    
+    function CreateBattle(string memory _name) public isPlayer(msg.sender) {
+        
+    }
+
+
 
     function _beforeTokenTransfer(
         address operator,
@@ -163,6 +170,9 @@ contract BattleGods is ERC1155, ERC1155Supply, Ownable {
     ) internal override(ERC1155, ERC1155Supply) {
         super._beforeTokenTransfer(operator, from, to, ids, amounts, data);
     }
+
+
+
 
 }
 
