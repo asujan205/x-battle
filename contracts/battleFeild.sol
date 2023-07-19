@@ -168,6 +168,19 @@ contract BattleGods is ERC1155, ERC1155Supply, Ownable {
 
     }
 
+function joinBattle (string memory name ) public {
+    Battle memory _battle = getBattleInfo(name);
+    require(_battle.status == BattleStatus.PENDING, "Battle is already started");
+    require(_battle.players[0] != msg.sender, "Player is already joined");
+    require(_battle.players[1] == address(0), "Battle is already full");
+
+    _battle.players[1] = msg.sender;
+    _battle.status = BattleStatus.STARTED;
+
+    updateBattle(name, _battle);
+
+    emit BattleCreated(name, _battle.players[0], _battle.players[1]);
+}
 
 
     function _beforeTokenTransfer(
