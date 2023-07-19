@@ -155,7 +155,17 @@ contract BattleGods is ERC1155, ERC1155Supply, Ownable {
      
     
     function CreateBattle(string memory _name) public isPlayer(msg.sender) {
-        
+         require(battleInfo[_name] == 0, "Battle is already created");
+        uint256 _id = battles.length;
+
+        bytes32 BattleHash = keccak256(abi.encodePacked(_name));
+        battles.push(Battle(BattleStatus.PENDING, BattleHash, _name, [msg.sender, address(0)], [0, 0], address(0)));
+
+        battleInfo[_name] = _id;
+
+        emit BattleCreated(_name, msg.sender, address(0));
+
+
     }
 
 
